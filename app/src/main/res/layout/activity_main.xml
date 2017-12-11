@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.baseinfo.simplebaseinfo.MainActivity">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"
+        android:text="Hello World!"
+        android:textIsSelectable="true"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/reget" />
+
+    <TextView
+        android:onClick="reget"
+        android:background="#22000000"
+        android:id="@+id/reget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="重新获取"
+        android:textColor="#ff0000" />
+
+</android.support.constraint.ConstraintLayout>
