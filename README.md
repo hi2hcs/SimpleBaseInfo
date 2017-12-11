@@ -1,2 +1,2 @@
 # SimpleBaseInfo
-get phone simple base infomation
+get simple base information of android-phone
