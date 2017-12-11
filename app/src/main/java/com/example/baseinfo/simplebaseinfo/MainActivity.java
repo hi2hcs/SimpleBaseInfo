@@ -13,14 +13,14 @@ import com.example.baseinfo.simplebaseinfo.utils.ScreenUtils;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView text;
+    private TextView mTextView;
     private boolean b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        text = (TextView) findViewById(R.id.text);
+        mTextView = (TextView) findViewById(R.id.text);
         setInfo();
     }
 
@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
                 .append("屏幕宽高:").append(screenHeight + "x" + screenWidth).append("\n")
                 .append("MAC Address:").append(macAddress);
 //                .append("android ID:").append(androidID).append("\n");
-        text.setText(infoStr.toString());
+        mTextView.setText(infoStr.toString());
         PermissionCheckUtil.checkReadPhoneState(this, new Runnable() {
             @Override
             public void run() {
                 String deviceIdStr = DeviceUtils.getDeviceIdStr();
-                String string = text.getText().toString();
-                text.setText(string + "\n" + "IMEI：" + deviceIdStr);
+                String textStr = mTextView.getText().toString();
+                mTextView.setText(textStr + "\n" + "IMEI：" + deviceIdStr);
             }
         });
     }
@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
     public void reget(View view) {//点击重新获取
 
         if (b) {
-            text.setTextColor(ActivityCompat.getColor(this, R.color.colorAccent));
+            mTextView.setTextColor(ActivityCompat.getColor(this, R.color.colorAccent));
         } else {
-            text.setTextColor(ActivityCompat.getColor(this, R.color.black));
+            mTextView.setTextColor(ActivityCompat.getColor(this, R.color.black));
         }
         b = !b;
         setInfo();
