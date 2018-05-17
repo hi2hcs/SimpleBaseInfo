@@ -68,18 +68,33 @@ public final class DeviceUtils {
         return Settings.Secure.getString(Utils.getApp().getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
+    @SuppressLint("MissingPermission")
     public static String getDeviceIdStr() {
-        String imei = "";
+        StringBuilder imei = new StringBuilder();
         TelephonyManager mTm = (TelephonyManager) Utils.getApp().getSystemService(TELEPHONY_SERVICE);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            imei = mTm.getImei();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            for (int slot = 0; slot < mTm.getPhoneCount(); slot++) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    if (slot == 1) {
+                        imei.append(" IMEI2:" + mTm.getImei(slot));
+                    } else {
+                        imei.append(mTm.getImei(slot));
+                    }
+                }else{
+                    if (slot == 1) {
+                        imei.append(" IMEI2:" + mTm.getDeviceId(slot));
+                    } else {
+                        imei.append(mTm.getDeviceId(slot));
+                    }
+                }
+            }
         } else {
-            imei = mTm.getDeviceId();
-
+            imei.append(mTm.getDeviceId());
         }
-        return imei;
+        return imei.toString();
     }
 
+    @SuppressLint("MissingPermission")
     public static String getNumber() {
         TelephonyManager mTm = (TelephonyManager) Utils.getApp().getSystemService(TELEPHONY_SERVICE);
         return mTm.getLine1Number();
