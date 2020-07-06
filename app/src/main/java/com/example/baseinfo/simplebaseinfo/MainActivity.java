@@ -31,13 +31,19 @@ public class MainActivity extends AppCompatActivity {
         String androidID = DeviceUtils.getAndroidID();
         int screenHeight = ScreenUtils.getScreenHeight();
         int screenWidth = ScreenUtils.getScreenWidth();
+        int densityDpi = ScreenUtils.getDensityDpi();
+        float density = ScreenUtils.getDensity();
+        float saledDensity = ScreenUtils.getsSaledDensity();
         String macAddress = DeviceUtils.getMacAddress();
         StringBuilder infoStr = new StringBuilder(200);
         infoStr.append("手机品牌：").append(manufacturer).append("\n")
                 .append("手机型号：").append(model).append("\n")
                 .append("系统版本:android " + Build.VERSION.RELEASE)
                 .append(" (").append(sdkVersion + ")").append("\n")
-                .append("屏幕宽高:").append(screenHeight + "x" + screenWidth).append("\n")
+                .append("屏幕宽高:").append(screenWidth + "x" + screenHeight).append("\n")
+                .append("Dpi:" + densityDpi).append("\n")
+                .append("Density:" + density).append("\n")
+                .append("SaledDensity:" + saledDensity).append("\n")
                 .append("MAC Address:").append(macAddress);
 //                .append("android ID:").append(androidID).append("\n");
         mTextView.setText(infoStr.toString());

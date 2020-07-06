@@ -47,6 +47,18 @@ public final class ScreenUtils {
         return Utils.getApp().getResources().getDisplayMetrics().heightPixels;
     }
 
+    public static int getDensityDpi() {
+        return Utils.getApp().getResources().getDisplayMetrics().densityDpi;
+    }
+
+    public static float getDensity() {
+        return Utils.getApp().getResources().getDisplayMetrics().density;
+    }
+
+    public static float getsSaledDensity() {
+        return Utils.getApp().getResources().getDisplayMetrics().scaledDensity;
+    }
+
     /**
      * 设置屏幕为全屏
      * <p>需在 {@code setContentView} 之前调用</p>
